@@ -5,9 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nested Divs</title>
 <style>
+
   .outer {
     width: 100%;
     height: 100%; 
+    background-color: yellow; 
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .outer {
+    width: 300px;
+    height: 500px; 
     background-color: green; 
     display: flex;
     position: fixed;
@@ -35,11 +46,14 @@
 </style>
 </head>
 <body>
+
+  <div class="body-class" >
   <div class="outer" id="outerBox">
     <div class="middle" id="middleBox">
       <div class="inner"></div>
     </div>
   </div>
+</div>
   <script>
     // Get the middle box element
     var middleBox = document.getElementById("middleBox");
