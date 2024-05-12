@@ -13,7 +13,7 @@
         .outer {
             width: 100%;
             height: 100%;
-            background-color: red; /* Bright red */
+            background-color: red;
             display: flex;
             position: relative;
             align-items: center;
@@ -22,26 +22,28 @@
         .middle {
             width: 100%;
             height: 100%;
-            background-color: blue; /* Bright blue */
+            background-color: blue; 
             display: flex;
             position: absolute;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
         .inner1 {
             width: 300px;
             height: 500px;
-            background-color: green; /* Bright green */
+            background-color: green; 
             display: flex;
             position: absolute;
             align-items: center;
             justify-content: center;
             right: -240px;
+            transition: right 0.3s ease; /* Add transition for smooth animation */
         }
         .inner2 {
             width: 250px;
             height: 450px;
-            background-color: brown; /* Brown */
+            background-color: brown; 
             display: flex;
             position: absolute;
             align-items: center;
@@ -52,12 +54,48 @@
 <body>
     <div class="outer">
         <div class="middle">
-            <div class="inner1">
-                <div class="inner2">
+            <div class="inner1" id="inner1">
+                <div class="inner2" id="inner2">
                     Innermost Div
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Function to toggle the right property of inner1
+        function toggleRight() {
+            var inner1 = document.getElementById('inner1');
+            // Get the current value of the right property
+            var rightValue = parseInt(window.getComputedStyle(inner1).getPropertyValue('right'));
+            
+            if (rightValue === -240) {
+                // If the current value is -240px, change it to 0px
+                inner1.style.right = '0';
+            } else {
+
+            }
+        }
+
+        // Event listener for click event on inner1 to toggle right property
+        document.getElementById('inner1').addEventListener('click', toggleRight);
+
+        // Event listener to detect clicks or touches outside of inner1
+        document.body.addEventListener('click', function(event) {
+            var inner1 = document.getElementById('inner1');
+            var targetElement = event.target;
+
+            // Check if the click or touch target is not inside inner1
+            if (!inner1.contains(targetElement)) {
+                // Get the current value of the right property
+                var rightValue = parseInt(window.getComputedStyle(inner1).getPropertyValue('right'));
+
+                // If right value is 0, toggle it to -240px
+                if (rightValue === 0) {
+                    inner1.style.right = '-240px';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
