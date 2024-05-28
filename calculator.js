@@ -43,7 +43,7 @@ function calculate() {
       break;
     case '/':
       if (secondValue === 0) {
-        alert('Cannot divide by zero');
+        alert('What The Fuck Are You A Stupid');
         clearDisplay();
         return;
       }
