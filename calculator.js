@@ -19,6 +19,14 @@ function clearDisplay() {
   display.textContent = '0';
 }
 
+function backspace() {
+  currentValue = currentValue.slice(0, -1);
+  if (currentValue === '') {
+    currentValue = '0';
+  }
+  display.textContent = currentValue;
+}
+
 function calculate() {
   const secondValue = parseFloat(currentValue);
   let result;
@@ -49,15 +57,6 @@ function calculate() {
   display.textContent = currentValue;
   operator = null;
   firstValue = null;
-}
-
-function appendToDisplay(value) {
-  if (currentValue === '0') {
-    currentValue = value;
-  } else {
-    currentValue += value;
-  }
-  display.textContent = currentValue;
 }
 
 function setOperator(op) {
